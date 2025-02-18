@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image to PDF Converter - Free Online Tools</title>
+  <meta name="description" content="Convert your images (JPG, PNG, BMP, etc.) to PDF quickly and easily using our free online tool.">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/image-tools.css">
+  <!-- Add favicon, Schema.org structured data, etc. here -->
+
+  <!-- Include jsPDF Library from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  
+  <!-- Internal CSS for Main Section Enhancements -->
+  <style>
+    /* Enhanced styling for the main content (#tool-details) */
+    #tool-details {
+      background: #f9f9f9;
+      padding: 40px 20px;
+      margin: 30px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    #tool-details h2 {
+      margin-bottom: 20px;
+      font-size: 1.8em;
+      text-align: center;
+      color: #333;
+    }
+    #tool-details ol {
+      margin-left: 20px;
+      margin-bottom: 20px;
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+    #tool-details form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    #tool-details input[type="file"] {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background: #fff;
+      width: 100%;
+      max-width: 400px;
+    }
+    #tool-details button {
+      padding: 12px 25px;
+      font-size: 1em;
+      background: #007BFF;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    #tool-details button:hover {
+      background: #0056b3;
+    }
+    #conversionResult {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 1.1em;
+      color: #28a745;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header with Global Navigation -->
+  <header>
+    <div class="container">
+      <a href="/" class="logo">Free Online Tools</a>
+      <nav>
+        <ul>
+          <li><a href="../../tools/text-tools/index.html">Text Tools</a></li>
+          <li><a href="index.html">Image Tools</a></li>
+          <li><a href="../../tools/financial-tools/index.html">Financial Tools</a></li>
+          <li><a href="../../tools/web-tools/index.html">Web Tools</a></li>
+          <li><a href="../../about.html">About</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+          <li><a href="../../legal/privacy-policy.html">Privacy Policy</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section for Image to PDF Tool -->
+  <section id="hero-image-tools">
+    <div class="container">
+      <h1>Image to PDF Converter</h1>
+      <p>Easily convert your images to PDF format with our fast and user-friendly tool.</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section id="tool-details">
+    <div class="container">
+      <h2>How to Convert an Image to PDF</h2>
+      <ol>
+        <li>Select your image file (JPG, PNG, BMP, etc.).</li>
+        <li>Click on the "Convert to PDF" button.</li>
+        <li>Download your newly created PDF file.</li>
+      </ol>
+
+      <!-- Conversion Form -->
+      <form id="imageToPdfForm" action="#" method="post" enctype="multipart/form-data">
+        <input type="file" name="imageFile" accept="image/*" required>
+        <button type="submit">Convert to PDF</button>
+      </form>
+
+      <!-- Result Section -->
+      <div id="conversionResult" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Free Online Tools. All Rights Reserved.</p>
+      <ul>
+        <li><a href="../../legal/privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="../../legal/terms.html">Terms & Conditions</a></li>
+        <li><a href="../../contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+  
+  <!-- Inline JavaScript for Image to PDF Conversion -->
+  <script>
+    document.getElementById('imageToPdfForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const fileInput = document.querySelector('input[type="file"]');
+      if (fileInput.files.length === 0) {
+        document.getElementById('conversionResult').innerHTML = '<p>Please select an image file.</p>';
+        return;
+      }
+
+      const file = fileInput.files[0];
+      const reader = new FileReader();
+
+      reader.onload = function(e) {
+        const imageData = e.target.result;
+        const img = new Image();
+        img.onload = function() {
+          const { jsPDF } = window.jspdf;
+          const doc = new jsPDF();
+
+          // PDF and image dimensions
+          const pdfWidth = doc.internal.pageSize.getWidth();
+          const pdfHeight = doc.internal.pageSize.getHeight();
+          const imgWidth = img.width;
+          const imgHeight = img.height;
+
+          // Calculate scale while preserving aspect ratio
+          const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+          const width = imgWidth * ratio;
+          const height = imgHeight * ratio;
+          const x = (pdfWidth - width) / 2;
+          const y = (pdfHeight - height) / 2;
+
+          // Determine the image format (PNG or JPEG)
+          const imgFormat = file.type.includes("png") ? 'PNG' : 'JPEG';
+
+          // Add image to PDF
+          doc.addImage(imageData, imgFormat, x, y, width, height);
+
+          // Save the PDF (triggers download)
+          doc.save('converted.pdf');
+
+          // Update message after download
+          document.getElementById('conversionResult').innerHTML = '<p>Conversion complete! Your PDF has been downloaded.</p>';
+        };
+        img.src = imageData;
+      };
+
+      reader.readAsDataURL(file);
+    });
+  </script>
+</body>
+</html>

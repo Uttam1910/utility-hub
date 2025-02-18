@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text-to-Speech | Free Online Tools</title>
+  <meta name="description" content="Convert your written text to natural-sounding speech using our free text-to-speech tool. Perfect for accessibility and productivity.">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/text-tools.css">
+  
+</head>
+<body>
+  <!-- Header with Global Navigation -->
+  <header>
+    <div class="container">
+      <a href="/" class="logo">Free Online Tools</a>
+      <nav>
+        <ul>
+          <li><a href="/tools/text-tools/index.html" class="active">Text Tools</a></li>
+          <li><a href="/tools/image-tools/index.html">Image Tools</a></li>
+          <li><a href="/tools/financial-tools/index.html">Financial Tools</a></li>
+          <li><a href="/tools/web-tools/index.html">Web Tools</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/legal/privacy-policy.html">Privacy Policy</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Tool Hero Section -->
+  <section id="tool-hero">
+    <div class="container">
+      <h1>Text-to-Speech</h1>
+      <p>Convert your text into audio. Paste your text below and click "Convert to Speech" to hear it spoken aloud.</p>
+    </div>
+  </section>
+
+  <!-- Tool Functionality Section -->
+  <section id="tool-functionality">
+    <div class="container">
+      <div class="tool-interface">
+        <textarea id="speechInput" rows="8" placeholder="Enter your text here..."></textarea>
+        <div class="button-group">
+          <button onclick="speakText()">Convert to Speech</button>
+          <button onclick="clearText()">Clear</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How-To Section -->
+  <section id="how-to">
+    <div class="container">
+      <h2>How to Use the Text-to-Speech Tool</h2>
+      <ol>
+        <li>Enter or paste your text into the input field.</li>
+        <li>Click the "Convert to Speech" button to hear your text spoken aloud.</li>
+        <li>If needed, adjust your device's volume to your preference.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Free Online Tools. All Rights Reserved.</p>
+      <ul>
+        <li><a href="/legal/privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="/legal/terms.html">Terms &amp; Conditions</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Inline JavaScript for Text-to-Speech Functionality -->
+  <script>
+    function speakText() {
+      var text = document.getElementById("speechInput").value;
+      if (!text) {
+        alert("Please enter some text.");
+        return;
+      }
+      if ('speechSynthesis' in window) {
+        var msg = new SpeechSynthesisUtterance();
+        msg.text = text;
+        // Optional: Customize voice, language, pitch, or rate if desired.
+        window.speechSynthesis.speak(msg);
+      } else {
+        alert("Sorry, your browser does not support text-to-speech.");
+      }
+    }
+
+    function clearText() {
+      document.getElementById("speechInput").value = '';
+    }
+  </script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

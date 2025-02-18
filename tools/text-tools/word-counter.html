@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Counter | Free Online Tools</title>
+  <meta name="description" content="Count words, characters, and sentences in your text instantly using our free word counter tool.">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/text-tools.css">
+  
+</head>
+<body>
+  <!-- Header with Global Navigation -->
+  <header>
+    <div class="container">
+      <a href="/" class="logo">Free Online Tools</a>
+      <nav>
+        <ul>
+          <li><a href="/tools/text-tools/index.html" class="active">Text Tools</a></li>
+          <li><a href="/tools/image-tools/index.html">Image Tools</a></li>
+          <li><a href="/tools/financial-tools/index.html">Financial Tools</a></li>
+          <li><a href="/tools/web-tools/index.html">Web Tools</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/legal/privacy-policy.html">Privacy Policy</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Tool Hero Section -->
+  <section id="tool-hero">
+    <div class="container">
+      <h1>Word Counter</h1>
+      <p>Paste your text below to count the words, characters, and sentences instantly.</p>
+    </div>
+  </section>
+
+  <!-- Tool Functionality Section -->
+  <section id="tool-functionality">
+    <div class="container">
+      <div class="tool-interface">
+        <textarea id="inputText" rows="8" placeholder="Enter your text here..."></textarea>
+        <div class="button-group">
+          <button onclick="countText()">Count</button>
+          <button onclick="clearText()">Clear</button>
+        </div>
+        <div id="result">
+          <p><strong>Words:</strong> <span id="wordCount">0</span></p>
+          <p><strong>Characters:</strong> <span id="charCount">0</span></p>
+          <p><strong>Sentences:</strong> <span id="sentenceCount">0</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How-To Section -->
+  <section id="how-to">
+    <div class="container">
+      <h2>How to Use the Word Counter</h2>
+      <ol>
+        <li>Paste or type your text into the input area.</li>
+        <li>Click the "Count" button to calculate the metrics.</li>
+        <li>The results will display below the buttons.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Free Online Tools. All Rights Reserved.</p>
+      <ul>
+        <li><a href="/legal/privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="/legal/terms.html">Terms &amp; Conditions</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Inline JavaScript for Functionality -->
+  <script>
+    function countText() {
+      var text = document.getElementById("inputText").value;
+      var words = text.trim().split(/\s+/).filter(function(word) { return word.length > 0; });
+      var wordCount = words.length;
+      var charCount = text.length;
+      var sentenceCount = text.split(/[.!?]+/).filter(function(sentence) { return sentence.trim().length > 0; }).length;
+      document.getElementById("wordCount").textContent = wordCount;
+      document.getElementById("charCount").textContent = charCount;
+      document.getElementById("sentenceCount").textContent = sentenceCount;
+    }
+
+    function clearText() {
+      document.getElementById("inputText").value = '';
+      document.getElementById("wordCount").textContent = 0;
+      document.getElementById("charCount").textContent = 0;
+      document.getElementById("sentenceCount").textContent = 0;
+    }
+  </script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

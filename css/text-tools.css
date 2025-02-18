@@ -1,0 +1,153 @@
+/* Text Tools Category Styles */
+
+/* Overall Background for Text Tools Pages */
+body {
+    background-color: #f2f8ff;
+  }
+  
+  /* Hero/Category/Tool Hero Sections Specific to Text Tools */
+  #hero,
+  #category-hero,
+  #tool-hero {
+    background-color: #e6f4ff;
+    padding: 60px 0;
+    text-align: center;
+    color: #004080;
+  }
+  #hero h1,
+  #category-hero h1,
+  #tool-hero h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  #hero p,
+  #category-hero p,
+  #tool-hero p {
+    font-size: 18px;
+  }
+  
+  /* Tool Interface Styles */
+  .tool-interface {
+    background-color: #fff;
+    border: 2px solid #007acc;
+    border-radius: 6px;
+    padding: 20px;
+    margin: 20px 0;
+  }
+  .tool-interface textarea,
+  .tool-interface input[type="text"],
+  .tool-interface input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+  
+  /* Button Styles for Text Tools */
+  .button-group button,
+  .cta-button,
+  .category-link {
+    background-color: #007acc;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  .button-group button:hover,
+  .cta-button:hover,
+  .category-link:hover {
+    background-color: #005fa3;
+  }
+  
+  /* How-To Section for Tools */
+  #how-to {
+    padding: 40px 0;
+    background-color: #f9f9f9;
+  }
+  #how-to h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #004080;
+  }
+  #how-to ol {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 16px;
+    color: #333;
+  }
+  #how-to ol li {
+    margin-bottom: 10px;
+  }
+  
+  /* Responsive Adjustments for Text Tools */
+  @media (max-width: 768px) {
+    .tool-interface {
+      padding: 15px;
+    }
+    .button-group button,
+    .cta-button,
+    .category-link {
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+  }
+  
+  /* Enhanced Grid Layout for Tools */
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Enhanced Tool Card */
+.tool-card {
+  background: linear-gradient(135deg, #ffffff, #e6f4ff);
+  border: 1px solid #d0e8ff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 64, 128, 0.1);
+}
+
+/* Hover effect for cards */
+.tool-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 20px rgba(0, 64, 128, 0.2);
+}
+
+/* Card Title Styling */
+.tool-card h3 {
+  font-size: 1.5rem;
+  color: #004080;
+  margin-bottom: 0.5rem;
+}
+
+/* Card Description Styling */
+.tool-card p {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 1.2rem;
+  line-height: 1.4;
+}
+
+/* Enhanced Button Styling */
+.tool-card .tool-link {
+  display: inline-block;
+  background-color: #007acc;
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+}
+.tool-card .tool-link:hover {
+  background-color: #005fa3;
+}

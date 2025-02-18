@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Notepad | Free Online Tools</title>
+  <meta name="description" content="Quickly jot down ideas and notes with our free online notepad. Save, copy, and clear your notes easily.">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/text-tools.css">
+  
+</head>
+<body>
+  <!-- Header with Global Navigation -->
+  <header>
+    <div class="container">
+      <a href="/" class="logo">Free Online Tools</a>
+      <nav>
+        <ul>
+          <li><a href="/tools/text-tools/index.html" class="active">Text Tools</a></li>
+          <li><a href="/tools/image-tools/index.html">Image Tools</a></li>
+          <li><a href="/tools/financial-tools/index.html">Financial Tools</a></li>
+          <li><a href="/tools/web-tools/index.html">Web Tools</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/legal/privacy-policy.html">Privacy Policy</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Tool Hero Section -->
+  <section id="tool-hero">
+    <div class="container">
+      <h1>Online Notepad</h1>
+      <p>Jot down your ideas or quick notes. Your notes are saved in your browser until you clear them.</p>
+    </div>
+  </section>
+
+  <!-- Tool Functionality Section -->
+  <section id="tool-functionality">
+    <div class="container">
+      <div class="tool-interface">
+        <textarea id="notepad" rows="10" placeholder="Start typing your notes here..."></textarea>
+        <div class="button-group">
+          <button onclick="saveNotes()">Save</button>
+          <button onclick="copyNotes()">Copy</button>
+          <button onclick="clearNotes()">Clear</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How-To Section -->
+  <section id="how-to">
+    <div class="container">
+      <h2>How to Use the Online Notepad</h2>
+      <ol>
+        <li>Type your notes in the text area provided.</li>
+        <li>Click "Save" to store your notes in the browser's memory.</li>
+        <li>Click "Copy" to copy your notes to the clipboard.</li>
+        <li>Click "Clear" to erase your current notes.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Free Online Tools. All Rights Reserved.</p>
+      <ul>
+        <li><a href="/legal/privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="/legal/terms.html">Terms &amp; Conditions</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Inline JavaScript for Notepad Functionality -->
+  <script>
+    // Save notes using localStorage
+    function saveNotes() {
+      var notes = document.getElementById("notepad").value;
+      localStorage.setItem("onlineNotepad", notes);
+      alert("Notes saved!");
+    }
+
+    // Copy notes to clipboard
+    function copyNotes() {
+      var notepad = document.getElementById("notepad");
+      notepad.select();
+      document.execCommand("copy");
+      alert("Notes copied to clipboard!");
+    }
+
+    // Clear notes and localStorage
+    function clearNotes() {
+      if(confirm("Are you sure you want to clear your notes?")) {
+        document.getElementById("notepad").value = '';
+        localStorage.removeItem("onlineNotepad");
+      }
+    }
+
+    // Load saved notes on page load
+    window.onload = function() {
+      var savedNotes = localStorage.getItem("onlineNotepad");
+      if(savedNotes) {
+        document.getElementById("notepad").value = savedNotes;
+      }
+    }
+  </script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

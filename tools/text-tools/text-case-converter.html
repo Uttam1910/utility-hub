@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Case Converter | Free Online Tools</title>
+  <meta name="description" content="Convert your text into uppercase, lowercase, or title case instantly with our free text case converter. Perfect for writers and content creators!">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/text-tools.css">
+  
+  <!-- Additional SEO tags, favicon, and structured data can be added here -->
+</head>
+<body>
+  <!-- Header with Global Navigation -->
+  <header>
+    <div class="container">
+      <a href="/" class="logo">Free Online Tools</a>
+      <nav>
+        <ul>
+          <li><a href="/tools/text-tools/index.html" class="active">Text Tools</a></li>
+          <li><a href="/tools/image-tools/index.html">Image Tools</a></li>
+          <li><a href="/tools/financial-tools/index.html">Financial Tools</a></li>
+          <li><a href="/tools/web-tools/index.html">Web Tools</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/legal/privacy-policy.html">Privacy Policy</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Tool Hero Section -->
+  <section id="tool-hero">
+    <div class="container">
+      <h1>Text Case Converter</h1>
+      <p>Convert your text into uppercase, lowercase, or title case instantly. Simply paste your text below, choose an option, and click convert.</p>
+    </div>
+  </section>
+
+  <!-- Tool Functionality Section -->
+  <section id="tool-functionality">
+    <div class="container">
+      <div class="tool-interface">
+        <!-- Input Area -->
+        <textarea id="inputText" rows="8" placeholder="Enter your text here..."></textarea>
+        
+        <!-- Buttons for Conversions -->
+        <div class="button-group">
+          <button onclick="convertText('uppercase')">Uppercase</button>
+          <button onclick="convertText('lowercase')">Lowercase</button>
+          <button onclick="convertText('titlecase')">Title Case</button>
+          <button onclick="clearText()">Clear</button>
+        </div>
+        
+        <!-- Output Area -->
+        <h2>Converted Text</h2>
+        <textarea id="outputText" rows="8" placeholder="Your converted text will appear here..." readonly></textarea>
+      </div>
+    </div>
+  </section>
+
+  <!-- How-To & FAQs Section -->
+  <section id="how-to">
+    <div class="container">
+      <h2>How to Use the Text Case Converter</h2>
+      <ol>
+        <li>Enter or paste your text in the input field above.</li>
+        <li>Select the desired conversion option by clicking the respective button.</li>
+        <li>View the converted text in the output field.</li>
+        <li>Copy and paste your converted text as needed.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Free Online Tools. All Rights Reserved.</p>
+      <ul>
+        <li><a href="/legal/privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="/legal/terms.html">Terms &amp; Conditions</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Inline JavaScript for Tool Functionality -->
+  <script>
+    function convertText(caseType) {
+      var input = document.getElementById("inputText").value;
+      var output = '';
+
+      if (caseType === 'uppercase') {
+        output = input.toUpperCase();
+      } else if (caseType === 'lowercase') {
+        output = input.toLowerCase();
+      } else if (caseType === 'titlecase') {
+        output = input.toLowerCase().split(' ').map(function(word) {
+          return word.charAt(0).toUpperCase() + word.slice(1);
+        }).join(' ');
+      }
+
+      document.getElementById("outputText").value = output;
+    }
+
+    function clearText() {
+      document.getElementById("inputText").value = '';
+      document.getElementById("outputText").value = '';
+    }
+  </script>
+  <script src="/js/main.js"></script>
+</body>
+</html>
